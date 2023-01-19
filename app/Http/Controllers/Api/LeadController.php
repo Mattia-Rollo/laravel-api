@@ -20,7 +20,11 @@ class LeadController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'message' => 'required'
-        ]);
+        ], [
+                'name' => 'Il :attribute è richiesto',
+                'email' => 'Inserire un :attribute valida',
+                'message' => 'Inserisci del contenuto'
+            ]);
 
         if ($validator->fails()) {
             return response()->json([
