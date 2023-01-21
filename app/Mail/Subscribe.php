@@ -9,20 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewContact extends Mailable
+class Subscribe extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $lead;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($_lead)
+    public function __construct()
     {
         //
-        $this->lead = $_lead;
     }
 
     /**
@@ -33,25 +31,20 @@ class NewContact extends Mailable
     public function envelope()
     {
         return new Envelope(
-            replyTo: $this->lead->address,
-            subject: 'Nuovo contatto',
+            subject: 'Subscribe',
         );
     }
 
     /**
      * Get the message content definition.
      *
-     * 
+     * @return \Illuminate\Mail\Mailables\Content
      */
     public function content()
     {
         return new Content(
-            view: 'emails.new-contact-mail',
+            markdown: 'emails.subscribers',
         );
-
-        // return $this->subject('Thank you for subscribing to our newsletter')
-        //     ->markdown('emails.subscribers');
-
     }
 
     /**

@@ -33,11 +33,15 @@ class LeadController extends Controller
             ]);
         }
 
+        //recupero l'email del utente
+        // $email = $data['email'];
+
         $new_lead = new Lead();
         $new_lead->fill($data);
         $new_lead->save();
 
-        Mail::to('info@boolpress.com')->send(new NewContact($new_lead));
+        //cambiato 'exemple@mail.com con $email, che non cambia nel mailtrap 
+        Mail::to('exemple@mail.com')->send(new NewContact($new_lead));
 
         return response()->json([
             'success' => true

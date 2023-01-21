@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\ProfileController;
 use App\Models\Project;
 use Illuminate\Support\Facades\Route;
@@ -7,6 +8,11 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TagController;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
+// use Symfony\Component\Routing\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +55,15 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')
 // });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/call', function () {
+
+    $response = Http::get('https://api.github.com/users/Mattia-Rollo/repos');
+
+    $jsonData = $response->json();
+
+    dd($jsonData);
+
+    // return $jsonData;
+
+});
