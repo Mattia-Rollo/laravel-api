@@ -30,7 +30,7 @@ class TagSeeder extends Seeder
         //     $tags = $tagsRes->json();
         //     foreach ($tags as $tag) {
         //         // dd($tag);
-        //         $key = array_search($tag, $tags);
+        //         $key = array_search($tag, $tags); //POSSO USARE array_keys($array) per stampare il nome di tutte le chiavi
         //         if (!in_array($key, $arrayTag)) {
         //             $arrayTag[] = $key;
         //         }
